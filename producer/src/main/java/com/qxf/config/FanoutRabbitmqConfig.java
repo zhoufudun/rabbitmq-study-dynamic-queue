@@ -1,6 +1,9 @@
 package com.qxf.config;
 
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,4 +46,9 @@ public class FanoutRabbitmqConfig {
         return BindingBuilder.bind(getFanoutSmsQueue()).to(getFanoutExchange());
     }
 
+    // 用于测试找到了交换机，但是没有找到队列的情况
+    @Bean
+    public FanoutExchange notBindingQueue(){
+        return new FanoutExchange("testNotBindingQueue");
+    }
 }
