@@ -1,12 +1,16 @@
 package com.qxf.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.UUID;
 
 /**
  * @ClassName MessageListenerConfig
@@ -14,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author qiuxinfa
  * @Date 2020/6/26 10:08
  **/
+@Slf4j
 @Configuration
 public class MessageListenerConfig {
 

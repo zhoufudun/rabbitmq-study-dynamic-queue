@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import static com.qxf.config.RoutingRabbitmqConfig.SMS_ROUTINGKEY;
+
 /**
  * @ClassName DynamicQueueController
  * @Description rabbitMQ 动态增减监听队列
@@ -25,7 +27,7 @@ public class DynamicQueueController {
 
     @GetMapping("/addQueue")
     public String addQueue(String queueName){
-        String url = "http://192.168.231.1:8888/queue/" + queueName;
+        String url = "http://127.0.0.1:8888/queue/" + queueName;
         return restTemplate.postForObject(url,null,String.class);
     }
 
@@ -37,7 +39,7 @@ public class DynamicQueueController {
 
     @GetMapping("/deleteQueue")
     public String deleteQueue(String queueName){
-        String url = "http://192.168.231.1:8888/queue/" + queueName;
+        String url = "http://127.0.0.1:8888/queue/" + queueName;
         restTemplate.delete(url);
         return "删除队列成功";
     }

@@ -9,3 +9,6 @@ spring:
     publisher-confirms: true
 #    #确认消息已发送到队列(Queue)
     publisher-returns: true
+
+server:
+  port: 8083
